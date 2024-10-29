@@ -3,7 +3,7 @@
 A  Wordle clone built with Next.js , featuring enhanced animations, dark mode, and statistics tracking.
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Next.js 14
 - TypeScript
@@ -11,7 +11,7 @@ A  Wordle clone built with Next.js , featuring enhanced animations, dark mode, a
 - TailwindCSS
 - Canvas Confetti
 
-## 🚀 Getting Started
+## Getting Started
 
 1. **Clone and Install**
 ```bash
@@ -40,7 +40,7 @@ npm run dev
 
 Visit `http://localhost:3000`
 
-## 🎮 How to Play
+## How to Play
 
 - Guess the word in 6 tries
 - Each guess must be a valid 5-letter word
@@ -49,7 +49,7 @@ Visit `http://localhost:3000`
   - 🟨 Correct letter, wrong spot
   - ⬜ Letter not in word
 
-## 📝 Database Schema
+## Database Schema
 
 ```prisma
 model Word {
