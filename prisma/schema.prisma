@@ -1,0 +1,46 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Word {
+  id        Int       @id @default(autoincrement())
+  word      String    @unique @db.VarChar(5)
+  usedCount Int       @default(0)
+  lastUsed  DateTime?
+  games     Game[]
+}
+
+model Game {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  wordId    Int
+  word      Word     @relation(fields: [wordId], references: [id])
+  attempts  Int
+  success   Boolean
+  duration  Int
+  createdAt DateTime @default(now())
+}
+
+model User {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  stats     Stats?
+}
+
+model Stats {
+  id          Int      @id @default(autoincrement())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  gamesPlayed Int      @default(0)
+  wins        Int      @default(0)
+  streak      Int      @default(0)
+  maxStreak   Int      @default(0)
+  avgAttempts Float    @default(0)
+  updatedAt   DateTime @updatedAt
+}
